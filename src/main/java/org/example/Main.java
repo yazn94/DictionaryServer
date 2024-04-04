@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Main method started");
         if (args.length != 2) {
-            System.err.println("Usage: java DictionaryServer <port number> <pool size>");
+            System.err.println("Bad usage: java DictionaryServer <port number> <pool size>");
             System.exit(1);
         }
         int port = Integer.parseInt(args[0]);

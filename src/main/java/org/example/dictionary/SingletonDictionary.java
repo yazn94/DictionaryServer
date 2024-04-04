@@ -1,5 +1,6 @@
 package org.example.dictionary;
 
+import java.io.IOException;
 import java.util.Map;
 
 public class SingletonDictionary {
@@ -7,11 +8,11 @@ public class SingletonDictionary {
     private final FileReader fileReader = new FileReader();
     private final Map<String, String> dictionary;
 
-    private SingletonDictionary() {
+    private SingletonDictionary() throws IOException {
         dictionary = fileReader.convert();
     }
 
-    public static SingletonDictionary getInstance() {
+    public static SingletonDictionary getInstance() throws IOException {
         if (instance == null) {
             instance = new SingletonDictionary();
         }

@@ -10,6 +10,8 @@ import java.util.concurrent.Executors;
 
 public class DictionaryServer {
     private final int port;
+
+    // Threads pool to handle multiple clients
     private final ExecutorService pool;
 
     public DictionaryServer(int port, int poolSize) {

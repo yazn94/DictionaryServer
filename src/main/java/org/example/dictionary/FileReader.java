@@ -16,19 +16,21 @@ import java.util.Map;
 public class FileReader {
     private final String filePath = "src/main/resources/words.json";
 
-
-    public Map<String, String> convert() {
+    public Map<String, String> convert() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, String> map = new HashMap<>();
-        try {
-            InputStream is = new FileInputStream(new File(filePath));
+        File file = new File(filePath);
+        if (!file.exists() || !file.canRead()) {
+            throw new IOException("File does not exist or cannot be read: " + filePath);
+        }
+        try (InputStream is = new FileInputStream(file)) {
             List<Map<String, String>> list = mapper.readValue(is, new TypeReference<List<Map<String, String>>>() {
             });
             for (Map<String, String> item : list) {
                 map.putAll(item);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new IOException("Error reading or parsing file: " + filePath, e);
         }
         return map;
     }
