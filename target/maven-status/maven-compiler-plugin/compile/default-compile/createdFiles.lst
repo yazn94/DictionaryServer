@@ -1,0 +1,6 @@
+org/example/Main.class
+org/example/dictionary/FileReader$1.class
+org/example/dictionary/FileReader.class
+org/example/server/DictionaryServer.class
+org/example/dictionary/SingletonDictionary.class
+org/example/client/ClientHandler.class
